@@ -763,7 +763,6 @@ XML_image2svg                   0.1     stable
 
 Programs in XAMPP
 -------------------
-[root@localhost bin]# ls -lh
 total 135M
 -rwxr-xr-x. 1 root root 2.4K May 11  2016 1pcre-config
 -rwxr-xr-x. 1 root root  34K May 11  2016 1pcregrep
