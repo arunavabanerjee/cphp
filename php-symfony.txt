@@ -149,6 +149,49 @@ http://symfonyv34/web/config.php  --- shows the configuration options to make sy
 -----------------------------------------------
 Using .htaccess to redirect to the main folder
 -----------------------------------------------
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+
+    # Explicitly disable rewriting for front controllers
+    RewriteRule ^/web/app_dev.php - [L]
+    RewriteRule ^/web/app.php - [L]
+
+    # Fix the bundles folder
+    RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
+
+    # Fix the assets folder
+    RewriteRule ^assets/(.*)$ /web/assets/$1  [QSA,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Change below before deploying to production
+    #RewriteRule ^(.*)$ /web/app.php [QSA,L]
+    RewriteRule ^(.*)$ /web/app_dev.php [QSA,L]
+</IfModule>
+-----------------------------------------------------------------
+https://undebugable.wordpress.com/2014/11/12/symfony2-htaccess-to-redirect-request-from-web-to/
+Symfony2 HTACCESS file to remove 'web' folder from url
+
+Defaul url http://mydomain.com/web/action
+Wanted url  http://mydomain.com/action
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+
+    # Explicitly disable rewriting for front controllers
+    RewriteRule ^/web/app_dev.php - [L]
+    RewriteRule ^/web/app.php - [L]
+
+    # Fix the bundles folder
+    RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Change below before deploying to production
+    #RewriteRule ^(.*)$ /web/app.php [QSA,L]
+    RewriteRule ^(.*)$ /web/app_dev.php [QSA,L]
+</IfModule>
+-------------------------------------------------------------------
 
 
 
