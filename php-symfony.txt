@@ -142,7 +142,15 @@ symfony/swiftmailer-bundle    v2.6.7  Symfony SwiftmailerBundle
 symfony/symfony               v3.4.14 The Symfony PHP framework
 twig/twig                     v1.35.4 Twig, the flexible, fast, and secure template language for PHP
 ---------------------------------------------------------------------------------------------------------
+Configuration can be checked from browser:
+-------------------------------------------
+http://symfonyv34/web/config.php  --- shows the configuration options to make symfony experience better
+
+-----------------------------------------------
 Using .htaccess to redirect to the main folder
 -----------------------------------------------
+
+
+
 
 
