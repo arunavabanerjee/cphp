@@ -192,7 +192,24 @@ Wanted url  http://mydomain.com/action
     RewriteRule ^(.*)$ /web/app_dev.php [QSA,L]
 </IfModule>
 -------------------------------------------------------------------
+https://gist.github.com/bocharsky-bw/3dc373b373275846b6de
+#path/to/project/.htaccess
 
+# Rewrite all requests to subdirectory, except exists file requests
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ /web/$1 [QSA,L]
+</IfModule>
+-------------
+#path/to/project/web/.htaccess
+
+# Remove subdirectory and app.php file from request URI
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(app\.php|app_dev\.php|config\.php|web/(?!app_dev\.php|config\.php))
+    RewriteRule ^(app\.php|app_dev\.php|config\.php)?/?(.*)$ /$2 [R=301,L]
+</IfModule>
 
 
 
